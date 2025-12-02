@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>وحشتيني ❤️</title>
+    <style>
+        /* الخطوط الأساسية والتصميم العشوائي */
+        body {
+            /* تعديل الخط لضمان دعم أفضل للرموز التعبيرية والقلوب */
+            font-family: 'Segoe UI Emoji', 'Segoe UI Symbol', 'Arial', 'Tahoma', sans-serif;
+            background: linear-gradient(135deg, #ffdde1 0%, #ee9ca7 100%);
+            color: #4a2333;
+            text-align: center;
+            padding: 20px;
+            overflow-x: hidden;
+            min-height: 1200px; /* زيادة ارتفاع الصفحة لاستيعاب المزيد من العناصر */
+            position: relative;
+        }
+
+        /* عنوان الصفحة */
+        h1 {
+            color: #d6336c;
+            font-size: 3.5em; 
+            margin-bottom: 70px; 
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            animation: pulse 1.5s infinite;
+            position: relative;
+            z-index: 10;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.08); } 
+            100% { transform: scale(1); }
+        }
+
+        /* تصميم القلوب المنتشرة (عشوائي) */
+        .heart-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 2em; 
+            color: #e74c3c;
+            opacity: 0.7; 
+            transition: opacity 1s;
+        }
+
+        /* أماكن الصور (عشوائية) */
+        .photo-spot {
+            width: 120px; 
+            height: 120px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border: 4px dashed #d6336c;
+            border-radius: 50%; /* شكل دائري عشوائي */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            z-index: 1;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            transition: transform 0.4s, box-shadow 0.4s;
+        }
+
+        .photo-spot:hover {
+            transform: scale(1.2) rotate(-5deg); 
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .photo-spot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 1;
+        }
+
+        /* لتوزيع أماكن الصور بعشوائية (تم زيادة العدد إلى 10) */
+        #spot1 { top: 100px; left: 10%; transform: rotate(5deg); border-radius: 15px; } 
+        #spot2 { top: 350px; right: 8%; transform: rotate(-10deg); }
+        #spot3 { top: 600px; left: 50%; transform: translate(-50%, 0) rotate(15deg); border-radius: 15px; }
+        #spot4 { top: 850px; left: 5%; transform: rotate(-5deg); }
+        #spot5 { top: 100px; right: 5%; transform: rotate(-15deg); }
+        #spot6 { top: 200px; left: 70%; transform: rotate(20deg); }
+        #spot7 { top: 500px; right: 30%; transform: rotate(-25deg); border-radius: 15px; }
+        #spot8 { top: 700px; left: 20%; transform: rotate(10deg); }
+        #spot9 { top: 950px; right: 20%; transform: rotate(-30deg); }
+        #spot10 { top: 450px; left: 15%; transform: rotate(35deg); }
+
+        /* زر التأثير */
+        #surpriseButton {
+            background-color: #d6336c;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s, transform 0.3s;
+            position: relative;
+            z-index: 10;
+            margin-top: 30px;
+        }
+
+        #surpriseButton:hover {
+            background-color: #a0204b;
+            transform: scale(1.05);
+        }
+
+        /* صندوق/ظرف القلوب */
+        .envelope {
+            width: 150px;
+            height: 100px;
+            background-color: #fff0f5;
+            border: 2px solid #d6336c;
+            border-radius: 10px;
+            margin: 20px auto;
+            position: relative;
+            z-index: 9;
+        }
+
+        /* القلوب العشوائية التي تظهر من الظرف */
+        .effect-heart {
+            position: absolute;
+            font-size: 2.5em;
+            color: #ff6b81;
+            opacity: 0;
+            animation: flyup 1.8s ease-out forwards;
+            z-index: 11;
+        }
+
+        /* الصورة العشوائية التي تظهر */
+        .random-image-pop {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            width: 300px; 
+            height: 300px;
+            border-radius: 15px;
+            border: 8px solid #d6336c;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 20;
+            background-color: white;
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        .random-image-pop.show {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+
+        .random-image-pop img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        @keyframes flyup {
+            0% { transform: translateY(0) rotate(0); opacity: 1; }
+            100% { transform: translateY(-250px) rotate(45deg); opacity: 0; }
+        }
+        
+        /* إضافة رسالة إضافية أسفل الصفحة */
+        .footer-message {
+            margin-top: 80px; 
+            font-size: 1.5em; 
+            color: #a0204b; 
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="heart-container" id="heart-bg-container"></div>
+
+    <h1>وحشتيني ❤️ كتشير كتشير...</h1>
+
+    <div class="envelope">
+        <p style="margin-top: 40px; color: #d6336c;">📮 صندوق المفاجآت</p>
+    </div>
+
+    <button id="surpriseButton">دوس هنا وشوف إيه اللي هيطلع!</button>
+
+    <div id="spot1" class="photo-spot"><img src="placeholder-1.jpg" alt="صورة مكان 1"></div>
+    <div id="spot2" class="photo-spot"><img src="placeholder-2.jpg" alt="صورة مكان 2"></div>
+    <div id="spot3" class="photo-spot"><img src="placeholder-3.jpg" alt="صورة مكان 3"></div>
+    <div id="spot4" class="photo-spot"><img src="placeholder-4.jpg" alt="صورة مكان 4"></div>
+    <div id="spot5" class="photo-spot"><img src="placeholder-5.jpg" alt="صورة مكان 5"></div>
+    <div id="spot6" class="photo-spot"><img src="placeholder-6.jpg" alt="صورة مكان 6"></div>
+    <div id="spot7" class="photo-spot"><img src="placeholder-7.jpg" alt="صورة مكان 7"></div>
+    <div id="spot8" class="photo-spot"><img src="placeholder-8.jpg" alt="صورة مكان 8"></div>
+    <div id="spot9" class="photo-spot"><img src="placeholder-9.jpg" alt="صورة مكان 9"></div>
+    <div id="spot10" class="photo-spot"><img src="placeholder-10.jpg" alt="صورة مكان 10"></div>
+
+    <div class="random-image-pop" id="randomImagePop">
+        <img id="popupImage" src="" alt="صورة عشوائية">
+    </div>
+    
+    <p class="footer-message">
+        "كل مكان في الصفحة دي بيحكي عن ذكرى حلوة لينا... اشتقت لك جداً!"
+    </p>
+
+    <script>
+        // مصفوفة مسارات الصور (يجب استبدالها بمسارات صورك الحقيقية!)
+        const imagePaths = [
+            'placeholder-1.jpg',
+            'placeholder-2.jpg',
+            'placeholder-3.jpg',
+            'placeholder-4.jpg',
+            'placeholder-5.jpg',
+            'placeholder-6.jpg',
+            'placeholder-7.jpg',
+            'placeholder-8.jpg',
+            'placeholder-9.jpg',
+            'placeholder-10.jpg',
+            'another-picture.jpg',
+            'love-moment.jpg',
+            'happy-day.jpg',
+            'sweet-memory.png',
+            'us-together.jpg'
+        ];
+
+        // 1. وظيفة نشر القلوب في الخلفية (تم استبدال رموز الإيموجي برموز HTML لتجنب مشكلة المربعات)
+        function createBackgroundHearts() {
+            const container = document.getElementById('heart-bg-container');
+            // &#x2764; = قلب أحمر سميك، &#x2665; = قلب أسود بسيط، &#10084; = قلب أحمر، &#10024; = نجمة
+            const heartIcons = ['&#x2764;', '&#10084;', '&#x2665;', '&#10024;']; 
+            
+            // إنشاء 100 قلب بشكل عشوائي
+            for (let i = 0; i < 100; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = heartIcons[Math.floor(Math.random() * heartIcons.length)];
+                
+                // تحديد الموقع والحجم والدوران بشكل عشوائي
+                heart.style.top = Math.random() * 100 + '%';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.fontSize = (Math.random() * 2 + 1.5) + 'em'; 
+                heart.style.transform = `rotate(${Math.random() * 360}deg)`;
+                
+                container.appendChild(heart);
+            }
+        }
+        
+        // 2. وظيفة إطلاق القلوب والصورة عند الضغط على الزر
+        document.getElementById('surpriseButton').addEventListener('click', function() {
+            const envelope = document.querySelector('.envelope');
+            
+            // أ. إطلاق 20 قلب عشوائي من موقع الظرف
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('effect-heart');
+                heart.innerHTML = '&#x2764;'; // قلب أحمر سميك (رمز HTML)
+                
+                const rect = envelope.getBoundingClientRect();
+                heart.style.top = (rect.top + rect.height / 2) + 'px';
+                heart.style.left = (rect.left + rect.width / 2 + (Math.random() * 60 - 30)) + 'px'; 
+                
+                document.body.appendChild(heart);
+                
+                setTimeout(() => heart.remove(), 1800);
+            }
+            
+            // ب. اختيار وعرض صورة عشوائية
+            const randomIndex = Math.floor(Math.random() * imagePaths.length);
+            const randomImagePath = imagePaths[randomIndex];
+            
+            const randomImagePop = document.getElementById('randomImagePop');
+            const popupImage = document.getElementById('popupImage');
+            
+            popupImage.src = randomImagePath;
+            randomImagePop.classList.add('show');
+            
+            // إخفاء الصورة بعد 4 ثواني
+            setTimeout(() => randomImagePop.classList.remove('show'), 4000);
+        });
+
+        window.onload = createBackgroundHearts;
+    </script>
+
+</body>
+</html>
